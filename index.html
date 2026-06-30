@@ -279,6 +279,7 @@ nav {
 
 /* ── SECTION SHARED ── */
 section { padding: 112px 48px; }
+.pad-section { padding: 112px 48px; }
 .section-inner { max-width: 1080px; margin: 0 auto; }
 
 .section-eyebrow {
@@ -569,7 +570,8 @@ footer {
 @media (max-width: 768px) {
   nav { padding: 0 20px; }
   nav .nav-links { display: none; }
-  section { padding: 72px 20px; }
+  section { padding: 64px 20px; }
+  .pad-section { padding: 64px 20px !important; }
   .process-grid { grid-template-columns: 1fr 1fr; }
   .process-step { border-bottom: 1px solid var(--border); }
   .services-grid { grid-template-columns: 1fr; }
@@ -577,7 +579,25 @@ footer {
   .testi-grid { grid-template-columns: 1fr; }
   .cta-form { flex-direction: column; }
   footer { flex-direction: column; align-items: flex-start; }
+
+  /* Pricing & maintenance sections: stack to single column */
+  .pricing-grid { grid-template-columns: 1fr !important; }
+  .included-grid { grid-template-columns: 1fr !important; }
+
+  /* Tighten padding on cards inside pricing/maintenance so they don't overflow */
+  .pad-section [style*="padding: 36px 40px"] { padding: 28px 22px !important; }
+  .pad-section [style*="padding: 28px 40px"] { padding: 24px 22px !important; }
+  .pad-section [style*="padding: 32px"] { padding: 24px !important; }
+
+  /* Price number shrink slightly on small screens */
+  .pad-section [style*="font-size: 56px"] { font-size: 42px !important; }
 }
+
+@media (max-width: 420px) {
+  .hero h1 { letter-spacing: -1.5px; }
+  .pad-section [style*="font-size: 42px"] { font-size: 36px !important; }
+}
+
 </style>
 </head>
 <body>
@@ -593,6 +613,7 @@ footer {
     <li><a href="#services">Services</a></li>
     <li><a href="#maintenance">Maintenance</a></li>
     <li><a href="#why">Why Velo</a></li>
+    <li><a href="#reviews">Reviews</a></li>
     <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
   </ul>
 </nav>
@@ -672,14 +693,14 @@ footer {
 </section>
 
 <!-- PRICING -->
-<section id="services" style="background: var(--gray-100); padding: 112px 48px;">
+<section id="services" class="pad-section" style="background: var(--gray-100);">
   <div class="section-inner">
     <div class="section-eyebrow">Pricing</div>
     <h2 class="section-title">Straightforward pricing.<br>No surprises.</h2>
     <p class="section-sub">A professionally built website, fully managed and supported — for one flat monthly fee.</p>
 
     <!-- PRICING LAYOUT -->
-    <div style="margin-top: 56px; display: grid; grid-template-columns: 5fr 4fr; gap: 24px; align-items: start;">
+    <div class="pricing-grid" style="margin-top: 56px; display: grid; grid-template-columns: 5fr 4fr; gap: 24px; align-items: start;">
 
       <!-- LEFT: CLEAN PLAN CARD -->
       <div style="background: var(--white); border: 1px solid var(--border); border-radius: 16px; overflow: hidden;">
@@ -697,7 +718,7 @@ footer {
         <!-- WHAT'S INCLUDED — TWO COLUMNS -->
         <div style="padding: 36px 40px; border-bottom: 1px solid var(--border);">
           <div style="font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--gray-400); margin-bottom: 24px;">What's included</div>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px 32px;">
+          <div class="included-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px 32px;">
             <div style="display: flex; align-items: flex-start; gap: 10px;">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px"><circle cx="8" cy="8" r="8" fill="#0a0a0f"/><path d="M4.5 8l2.5 2.5 4.5-5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               <span style="font-size: 13px; color: var(--gray-600); line-height: 1.5;">Custom-designed website</span>
@@ -790,13 +811,13 @@ footer {
 </section>
 
 <!-- MAINTENANCE PLAN -->
-<section id="maintenance" style="background: var(--white); padding: 112px 48px;">
+<section id="maintenance" class="pad-section" style="background: var(--white);">
   <div class="section-inner">
     <div class="section-eyebrow">For businesses with an existing site</div>
     <h2 class="section-title">Already have a website?<br>We'll keep it running right.</h2>
     <p class="section-sub">Most websites get built once and never touched again — outdated content, slow load times, broken forms. We keep yours fast, secure, and working for you.</p>
 
-    <div style="margin-top: 56px; display: grid; grid-template-columns: 5fr 4fr; gap: 24px; align-items: start;">
+    <div class="pricing-grid" style="margin-top: 56px; display: grid; grid-template-columns: 5fr 4fr; gap: 24px; align-items: start;">
 
       <!-- LEFT: PLAN CARD -->
       <div style="background: var(--white); border: 1px solid var(--border); border-radius: 16px; overflow: hidden;">
@@ -812,7 +833,7 @@ footer {
 
         <div style="padding: 36px 40px; border-bottom: 1px solid var(--border);">
           <div style="font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--gray-400); margin-bottom: 24px;">What's included</div>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px 32px;">
+          <div class="included-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px 32px;">
             <div style="display: flex; align-items: flex-start; gap: 10px;">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px"><circle cx="8" cy="8" r="8" fill="#0a0a0f"/><path d="M4.5 8l2.5 2.5 4.5-5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               <span style="font-size: 13px; color: var(--gray-600); line-height: 1.5;">Hosting & security monitoring</span>
@@ -955,8 +976,377 @@ footer {
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta-section" id="contact" style="padding: 112px 48px;">
+<!-- REVIEWS -->
+<section id="reviews" class="pad-section" style="background: var(--white);">
+  <div class="section-inner">
+    <div class="section-eyebrow">Client Feedback</div>
+    <h2 class="section-title">Tell us how<br>we're doing.</h2>
+    <p class="section-sub">Worked with Velo? Leave a rating and a few words — it helps other business owners know what to expect.</p>
+
+    <div class="reviews-layout">
+
+      <!-- LEFT: SUMMARY + LIST -->
+      <div class="reviews-list-col">
+        <div class="reviews-summary" id="reviewsSummary">
+          <div class="summary-score" id="summaryScore">—</div>
+          <div class="summary-stars" id="summaryStars">☆☆☆☆☆</div>
+          <div class="summary-count" id="summaryCount">No reviews yet</div>
+        </div>
+
+        <div id="reviewsList" class="reviews-list">
+          <!-- populated by JS -->
+        </div>
+      </div>
+
+      <!-- RIGHT: FORM -->
+      <div class="review-form-card">
+        <div class="review-form-title">Leave a review</div>
+
+        <div class="star-picker" id="starPicker">
+          <button type="button" class="star-btn" data-val="1" aria-label="1 star">★</button>
+          <button type="button" class="star-btn" data-val="2" aria-label="2 stars">★</button>
+          <button type="button" class="star-btn" data-val="3" aria-label="3 stars">★</button>
+          <button type="button" class="star-btn" data-val="4" aria-label="4 stars">★</button>
+          <button type="button" class="star-btn" data-val="5" aria-label="5 stars">★</button>
+        </div>
+        <div class="star-hint" id="starHint">Tap to rate</div>
+
+        <input type="text" id="reviewName" class="review-input" placeholder="Your name" maxlength="40" />
+        <textarea id="reviewComment" class="review-textarea" placeholder="Share a few words about your experience..." maxlength="500" rows="4"></textarea>
+
+        <button type="button" class="review-submit" id="reviewSubmit">Submit review</button>
+        <div class="review-status" id="reviewStatus"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .reviews-layout {
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 32px;
+    align-items: start;
+  }
+
+  .reviews-summary {
+    background: var(--gray-100);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 32px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .summary-score {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--black);
+    letter-spacing: -1.5px;
+    line-height: 1;
+  }
+  .summary-stars {
+    font-size: 20px;
+    color: var(--black);
+    letter-spacing: 2px;
+  }
+  .summary-count {
+    font-size: 13px;
+    color: var(--gray-600);
+    font-weight: 500;
+  }
+
+  .reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-height: 620px;
+    overflow-y: auto;
+    padding-right: 4px;
+  }
+  .review-item {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 22px;
+    background: var(--white);
+  }
+  .review-item-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .review-item-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--black);
+  }
+  .review-item-stars {
+    font-size: 13px;
+    color: var(--black);
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+  }
+  .review-item-text {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--gray-600);
+  }
+  .review-item-date {
+    font-size: 11px;
+    color: var(--gray-400);
+    margin-top: 8px;
+  }
+
+  .reviews-empty {
+    text-align: center;
+    padding: 48px 20px;
+    color: var(--gray-400);
+    font-size: 13px;
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+  }
+
+  /* FORM */
+  .review-form-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px;
+    position: sticky;
+    top: 88px;
+  }
+  .review-form-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--black);
+    letter-spacing: -0.3px;
+    margin-bottom: 20px;
+  }
+
+  .star-picker {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+  .star-btn {
+    background: none;
+    border: none;
+    font-size: 30px;
+    line-height: 1;
+    color: var(--border);
+    cursor: pointer;
+    padding: 2px;
+    transition: color 0.12s, transform 0.1s;
+  }
+  .star-btn:hover { transform: scale(1.08); }
+  .star-btn.filled { color: var(--black); }
+  .star-hint {
+    font-size: 12px;
+    color: var(--gray-400);
+    margin-bottom: 22px;
+  }
+
+  .review-input, .review-textarea {
+    width: 100%;
+    background: var(--gray-100);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    color: var(--black);
+    outline: none;
+    transition: border-color 0.15s;
+    margin-bottom: 12px;
+    resize: vertical;
+  }
+  .review-input::placeholder, .review-textarea::placeholder { color: var(--gray-400); }
+  .review-input:focus, .review-textarea:focus { border-color: var(--gray-800); background: var(--white); }
+
+  .review-submit {
+    width: 100%;
+    background: var(--black);
+    color: var(--white);
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 13px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+    margin-top: 4px;
+  }
+  .review-submit:hover { opacity: 0.85; }
+  .review-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .review-status {
+    font-size: 12px;
+    margin-top: 10px;
+    text-align: center;
+    min-height: 16px;
+  }
+  .review-status.success { color: #16a34a; font-weight: 600; }
+  .review-status.error { color: #dc2626; font-weight: 600; }
+
+  @media (max-width: 768px) {
+    .reviews-layout { grid-template-columns: 1fr; }
+    .review-form-card { position: static; }
+    .reviews-summary { padding: 22px 20px; }
+  }
+</style>
+
+<script>
+(function() {
+  const STORAGE_KEY = 'velo_reviews_v1';
+  let selectedStars = 0;
+
+  function loadReviews() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch (e) { return []; }
+  }
+
+  function saveReviews(reviews) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
+  }
+
+  function starString(n) {
+    return '★'.repeat(n) + '☆'.repeat(5 - n);
+  }
+
+  function formatDate(iso) {
+    const d = new Date(iso);
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  }
+
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  function renderSummary(reviews) {
+    const scoreEl = document.getElementById('summaryScore');
+    const starsEl = document.getElementById('summaryStars');
+    const countEl = document.getElementById('summaryCount');
+
+    if (reviews.length === 0) {
+      scoreEl.textContent = '—';
+      starsEl.textContent = '☆☆☆☆☆';
+      countEl.textContent = 'No reviews yet — be the first';
+      return;
+    }
+    const avg = reviews.reduce((sum, r) => sum + r.stars, 0) / reviews.length;
+    scoreEl.textContent = avg.toFixed(1);
+    starsEl.textContent = starString(Math.round(avg));
+    countEl.textContent = `${reviews.length} review${reviews.length === 1 ? '' : 's'}`;
+  }
+
+  function renderList(reviews) {
+    const listEl = document.getElementById('reviewsList');
+    if (reviews.length === 0) {
+      listEl.innerHTML = '<div class="reviews-empty">No reviews yet. Submitted reviews will appear here.</div>';
+      return;
+    }
+    const sorted = reviews.slice().sort((a, b) => new Date(b.date) - new Date(a.date));
+    listEl.innerHTML = sorted.map(r => `
+      <div class="review-item">
+        <div class="review-item-top">
+          <span class="review-item-name">${escapeHtml(r.name)}</span>
+          <span class="review-item-stars">${starString(r.stars)}</span>
+        </div>
+        ${r.comment ? `<div class="review-item-text">${escapeHtml(r.comment)}</div>` : ''}
+        <div class="review-item-date">${formatDate(r.date)}</div>
+      </div>
+    `).join('');
+  }
+
+  function renderAll() {
+    const reviews = loadReviews();
+    renderSummary(reviews);
+    renderList(reviews);
+  }
+
+  // Star picker interactions
+  const starBtns = document.querySelectorAll('.star-btn');
+  const starHint = document.getElementById('starHint');
+
+  function paintStars(upTo) {
+    starBtns.forEach(btn => {
+      const val = parseInt(btn.dataset.val, 10);
+      btn.classList.toggle('filled', val <= upTo);
+    });
+  }
+
+  starBtns.forEach(btn => {
+    btn.addEventListener('mouseenter', () => paintStars(parseInt(btn.dataset.val, 10)));
+    btn.addEventListener('mouseleave', () => paintStars(selectedStars));
+    btn.addEventListener('click', () => {
+      selectedStars = parseInt(btn.dataset.val, 10);
+      paintStars(selectedStars);
+      starHint.textContent = selectedStars + ' star' + (selectedStars === 1 ? '' : 's') + ' selected';
+    });
+  });
+
+  // Submit handler
+  document.getElementById('reviewSubmit').addEventListener('click', () => {
+    const nameInput = document.getElementById('reviewName');
+    const commentInput = document.getElementById('reviewComment');
+    const statusEl = document.getElementById('reviewStatus');
+
+    const name = nameInput.value.trim();
+    const comment = commentInput.value.trim();
+
+    if (selectedStars === 0) {
+      statusEl.textContent = 'Please select a star rating.';
+      statusEl.className = 'review-status error';
+      return;
+    }
+    if (!name) {
+      statusEl.textContent = 'Please enter your name.';
+      statusEl.className = 'review-status error';
+      nameInput.focus();
+      return;
+    }
+
+    const reviews = loadReviews();
+    reviews.push({
+      name: name,
+      stars: selectedStars,
+      comment: comment,
+      date: new Date().toISOString()
+    });
+    saveReviews(reviews);
+
+    // Reset form
+    nameInput.value = '';
+    commentInput.value = '';
+    selectedStars = 0;
+    paintStars(0);
+    starHint.textContent = 'Tap to rate';
+
+    statusEl.textContent = 'Thanks! Your review has been posted.';
+    statusEl.className = 'review-status success';
+    setTimeout(() => { statusEl.textContent = ''; statusEl.className = 'review-status'; }, 4000);
+
+    renderAll();
+  });
+
+  renderAll();
+})();
+</script>
+<section class="cta-section pad-section" id="contact">
   <div class="cta-inner">
     <h2>Ready to get your business online?</h2>
     <p>Drop your email and we'll reach out within 24 hours to set up a free 15-minute call.</p>
